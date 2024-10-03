@@ -6,10 +6,9 @@ const FieldCreator = ({ data }) => {
     return (
         <div className='flex flex-col gap-5 ' >
             {data.map(el =>
-                <Field placeHolder={el.name} name={el.name} />
+                <Field id={el.name} placeHolder={el.name} name={el.name} />
             )}
         </div>
     )
 }
-
 export default FieldCreator
