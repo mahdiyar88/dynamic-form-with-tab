@@ -26,15 +26,17 @@ const TabCreator = () => {
       }
     ]
   }
+  const onSubmit = (data) => {
+    console.log(data)
+
+  }
   const [step, setStep] = useState(0);
   const allFields = () => {
     let fields = []
-
     tab.tabs.forEach(tabEl => {
       tabEl.fields.forEach(el => {
         el["page"] = tabEl.id
         fields.push(el)
-
       })
     })
     return fields
@@ -52,7 +54,7 @@ const TabCreator = () => {
       </div>
       <div className='bg-neutral-900/70   min-h-96 w-8/12 mx-auto rounded-lg shadow-md m-5 p-5  '>
         {tab.tabs[step].content}
-        <FormCreator allData={allFields()}  data={tab.tabs[step].fields} />
+        <FormCreator onSubmit={onSubmit} step={[step, tab.tabs.length - 1, () => setStep(e => e + 1)]} allData={allFields()} data={tab.tabs[step].fields} />
       </div>
     </div>
   )
